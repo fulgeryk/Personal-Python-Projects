@@ -69,7 +69,6 @@ This allows clean and reusable win-check logic.
 
 - Replay option
 - Score tracking
-- AI opponent
 - GUI interface
 - Web-based version
 - Multiplayer over network
