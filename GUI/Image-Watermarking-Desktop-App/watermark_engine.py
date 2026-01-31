@@ -15,6 +15,6 @@ class WaterMarkEngine:
         x = draw_w - tw - margin
         y = draw_h - th - margin
         alpha = int(opac/100 * 255)
-        draw.text((100,100), text=text, font=font, fill=(0,0,0,alpha))
+        draw.text((x,y), text=text, font=font, fill=(0,0,0,alpha))
         result = Image.alpha_composite(base, overlay)
         return result
