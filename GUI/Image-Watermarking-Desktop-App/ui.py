@@ -1,6 +1,6 @@
 from tkinter import *
 from tkinter.filedialog import askopenfilename, asksaveasfilename
-from PIL import Image, ImageTk
+from PIL import Image, ImageTk, ImageFont
 from watermark_engine import WaterMarkEngine
 THEME_COLOR ="#FFFFFF"
 engine = WaterMarkEngine()
@@ -49,6 +49,8 @@ class WatermarkInterface:
         self.image_path = ""
         self.preview_image = ""
         self.image_pillow = ""
+        self.save_watermark = Entry(width=25)
+        self.save_watermark.grid(row=2, column=0, pady=(0,60), padx=(20,0))
         self.canvas=Canvas(width=800,height=400, highlightthickness=0, bg="white")
         self.canvas.grid(column=0, row=0, columnspan=2, rowspan=2)
         self.window.mainloop()
@@ -83,7 +85,16 @@ class WatermarkInterface:
         if self.image_pillow:
             path = asksaveasfilename(filetypes=((".png", ".png"), ("All Files", "*.*")), defaultextension=".png", confirmoverwrite=False)
             if path:
-                self.image_pillow.save(path)
+                save_text = self.save_watermark.get()
+                if save_text:
+                    watermarked = engine.image_watermark(
+                        image=self.image_pillow.copy(),
+                        text=save_text,
+                        opac=100,
+                        font = ImageFont.truetype("arial.ttf", 150),
+                        margin=20
+                    )
+                    watermarked.save(path)
 
 
 
