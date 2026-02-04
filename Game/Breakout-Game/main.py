@@ -7,8 +7,8 @@ import time
 
 Y_POS = -260
 X_POS = 0
-COLORS = ["red", "orange", "yellow", "green", "blue"]
-ROWS = 5
+COLORS = ["red", "orange", "yellow", "green", "blue", "coral"]
+ROWS = 6
 COLS = 15
 X_SPACING = 50
 Y_SPACING = 35
