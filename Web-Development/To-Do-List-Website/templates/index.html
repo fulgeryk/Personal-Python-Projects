@@ -1,0 +1,44 @@
+{% from "bootstrap5/form.html" import render_field  %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>To-Do List</title>
+    <!-- Load Bootstrap-Flask CSS here -->
+    {{ bootstrap.load_css() }}
+</head>
+<body>
+    <div class="container mt-4 mb-4">
+        <form method="POST" action="{{ url_for('add') }}">
+            {{ form.hidden_tag() }}
+            <div class="input-group">
+                {{ form.title(class="form-control", placeholder="Add a new task...") }}
+                <button class="btn btn-primary" type="submit">Add</button>
+            </div>
+        </form>
+    </div>
+     {% for post in all_posts %}
+        <div class="container-fluid">
+            <div class="d-flex align-items-center gap-2">
+                    {% if post.done %}
+                        <form method="POST" action="{{ url_for('toggle', id=post.id) }}">
+                            <button type="submit" class="btn btn-warning">Undo</button>
+                        </form>
+                        <form method="POST" action="{{ url_for('delete', id=post.id) }}">
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                        <h5 class="mb-0"><s>{{ post.title }}</s></h5>
+                    {% else %}
+                        <form method="POST" action="{{ url_for('toggle', id=post.id) }}">
+                            <button type="submit" class="btn btn-success">Done</button>
+                        </form>
+                        <form method="POST" action="{{ url_for('delete', id=post.id) }}">
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                        <h5 class="mb-0">{{ post.title }}</h5>
+                    {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+</body>
+</html>
