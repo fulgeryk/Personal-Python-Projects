@@ -21,9 +21,10 @@ class ENGINE:
     def set_voice(self, index):
         self.engine.setProperty("voice", self.voices[index].id)
 
+    def queue_save(self, text, output_path):
+        self.engine.save_to_file(text, str(output_path))
 
-    def save(self, text, output_path):
-        self.engine.save_to_file(text, output_path)
+    def flush(self):
         self.engine.runAndWait()
 
 

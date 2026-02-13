@@ -4,7 +4,7 @@ from tkinter.filedialog import askopenfilename
 from tts_engine import ENGINE
 from pathlib import Path
 
-MAX_CHARS = 200
+MAX_CHARS = 2500
 engine = ENGINE()
 output_dir = "output"
 engine.list_voices()
@@ -17,8 +17,8 @@ while True:
     if 0 <= choose < len(engine.voices):
         break
 engine.set_voice(choose)
-engine.select_rate(choose)
-engine.select_volume(choose)
+engine.select_rate(100)
+engine.select_volume(1)
 filetypes = (
     ('PDF files', '*.pdf'),
     ('All files', '*.*'),
@@ -42,4 +42,6 @@ for i in range(len(reader.pages)):
         chunk = text[start:start + MAX_CHARS]
         filepath = path / f"page_{i+1:03}_chunk_{chunk_index:02}.wav"
         print(f"Processing page {i + 1}/{len(reader.pages)} - chunk {chunk_index}")
-        engine.save(chunk, filepath)
+        engine.queue_save(chunk, filepath)
+    print(f"Generating audio for page {i + 1}...")
+    engine.flush()
