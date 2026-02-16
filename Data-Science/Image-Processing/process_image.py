@@ -18,7 +18,7 @@ class ProcessImage:
                 (pixel[1] // step) * step,
                 (pixel[2] // step) * step
             )
-            if pixel in map_color:
+            if pixel_quantized in map_color:
                 map_color[pixel_quantized] = map_color[pixel_quantized] + 1
             else:
                 map_color[pixel_quantized] = 1
