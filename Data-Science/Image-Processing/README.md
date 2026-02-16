@@ -39,7 +39,7 @@ rgb(32, 32, 32)  — 48177 px
 
 ## 📸 Screenshot
 
-![DominantColors.png](newimg.png)
+![DominantColor.png](img.png)
 
 ## 🧠 How It Works
 
@@ -98,7 +98,6 @@ This project helped me understand:
 ## 🔮 Future Improvements
 
 * Export palette
-* Show percentage instead of pixel count
 * Download palette image
 * Drag & drop upload
 * K-Means color clustering
