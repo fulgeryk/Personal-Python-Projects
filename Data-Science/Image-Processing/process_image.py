@@ -9,6 +9,7 @@ class ProcessImage:
         self.image = np.array(Image.open(image))
         x,y,z =self.image.shape
         self.image = self.image.reshape(x*y,z)
+        total_pixels = x*y
         step = 32
         map_color = {}
         for pixel in self.image:
@@ -30,7 +31,9 @@ class ProcessImage:
                 if count > max_count:
                     max_count = count
                     max_color = color
-            list_top_colors.append([max_color, max_count])
+            percent = max_count / total_pixels * 100
+            percent = round(percent, 2)
+            list_top_colors.append([max_color, max_count, percent])
             map_color.pop(max_color, None)
         return list_top_colors
 
