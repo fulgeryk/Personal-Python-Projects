@@ -13,6 +13,7 @@ A simple and clean Python web scraper that extracts the latest job listings from
   * Date Posted
   * Job Link
 * Saves data in:
+
   * CSV format (`jobs.csv`)
   * JSON format (`jobs.json`)
 * Uses type hints and modular functions
@@ -88,4 +89,19 @@ Infrastructure Engineer,Python Software Foundation,Remote,2025-02-15,https://www
 
 ---
 
-## Futur
+## Future Improvements
+
+* Add pagination support
+* Add keyword filtering
+* Export to database
+* Add command line arguments
+
+---
+
+## Author
+
+Sorin Fulger
+
+GitHub: https://github.com/fulgeryk
+
+---
